@@ -24,8 +24,8 @@ public class BookMyTicketProviderRestController {
         return new ResponseEntity<Ticket>(t, HttpStatus.OK);
     }
 
-    @GetMapping("/fetch")
-    public ResponseEntity<Ticket> fetchPassenger(Integer ticketNumber){
+    @GetMapping("/fetch/{ticketNumber}")
+    public ResponseEntity<Ticket> fetchPassenger(@PathVariable("ticketNumber") Integer ticketNumber){
         Passenger p = service.fetchPassenger(ticketNumber);
         Ticket t = new Ticket();
         t.setTicketNumber(p.getPid());
